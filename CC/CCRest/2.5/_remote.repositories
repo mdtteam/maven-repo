@@ -1,0 +1,6 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Wed Feb 24 14:04:04 EET 2016
+CCRest-2.5.jar>=
+CCRest-2.5.pom>=
+CCRest-2.5-sources.jar>=
+CCRest-2.5-javadoc.jar>=
