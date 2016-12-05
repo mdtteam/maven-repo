@@ -3,11 +3,12 @@
   <groupId>net.is_bg</groupId>
   <artifactId>projectgit</artifactId>
   <versioning>
-    <release>0.0.1</release>
+    <release>0.0.4</release>
     <versions>
       <version>0.0.1</version>
       <version>0.0.2</version>
+      <version>0.0.4</version>
     </versions>
-    <lastUpdated>20161205140441</lastUpdated>
+    <lastUpdated>20161205140743</lastUpdated>
   </versioning>
 </metadata>
