@@ -8,6 +8,7 @@
 	<description>ProjectGitClaz</description>
 	<properties>
 		<github.global.server>github</github.global.server>
+		<github.global.oauth2Token>41cead5c8308220f8c7d411b43b9e7fd2624320d</github.global.oauth2Token>
 		<project.scm.url>scm:git:git@github.com:mdtteam/maven-repo</project.scm.url>
 		<project.scm.connection>scm:git:git@github.com:mdtteam/maven-repo</project.scm.connection>
 		<project.scm.developerConnection>scm:git:git@github.com:mdtteam/maven-repo</project.scm.developerConnection>
