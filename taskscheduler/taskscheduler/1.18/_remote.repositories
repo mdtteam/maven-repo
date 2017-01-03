@@ -1,0 +1,5 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Tue Jan 03 15:08:43 EET 2017
+taskscheduler-1.18.pom>=
+taskscheduler-1.18.jar>mdtteam-mvn-repo=
+taskscheduler-1.18.jar>=

@@ -1,0 +1,18 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Tue Jan 03 15:01:42 EET 2017
+http\://repository.jboss.org/nexus/content/groups/staging/.error=
+https\://raw.githubusercontent.com/mdtteam/maven-repo/master/.error=
+https\://repository.jboss.org/nexus/content/groups/staging/.lastUpdated=1483448502144
+http\://repository.jboss.org/nexus/content/groups/public-jboss/.error=
+https\://raw.githubusercontent.com/mdtteam/maven-repo/master/.lastUpdated=1483448502410
+http\://repository.jboss.org/nexus/content/groups/public-jboss/.lastUpdated=1483448500626
+http\://repository.jboss.org/nexus/content/groups/public/.lastUpdated=1483448500999
+http\://repo.maven.apache.org/maven2/.lastUpdated=1483444359437
+file\://C\:\\Users\\v.rusinov\\development\\java\\LTFPG/WebContent/customlibs/.lastUpdated=1483448502152
+http\://repository.jboss.org/nexus/content/groups/staging/.lastUpdated=1483448501362
+https\://repository.jboss.org/nexus/content/groups/staging/.error=
+file\://C\:\\Users\\v.rusinov\\development\\java\\LTFPG/WebContent/customlibs/.error=
+http\://repo.maven.apache.org/maven2/.error=
+https\://repo.maven.apache.org/maven2/.lastUpdated=1483448502564
+https\://repo.maven.apache.org/maven2/.error=
+http\://repository.jboss.org/nexus/content/groups/public/.error=

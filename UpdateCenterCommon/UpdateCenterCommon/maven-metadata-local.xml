@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>UpdateCenterCommon</groupId>
+  <artifactId>UpdateCenterCommon</artifactId>
+  <versioning>
+    <release>1.34</release>
+    <versions>
+      <version>1.34</version>
+    </versions>
+    <lastUpdated>20170103130853</lastUpdated>
+  </versioning>
+</metadata>
