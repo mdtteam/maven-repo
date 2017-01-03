@@ -1,0 +1,5 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Tue Jan 03 14:58:38 EET 2017
+regservicelib-1.2.pom>=
+regservicelib-1.2.jar>mdtteam-mvn-repo=
+regservicelib-1.2.jar>=

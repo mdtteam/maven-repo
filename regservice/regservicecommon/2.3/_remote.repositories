@@ -1,0 +1,5 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Tue Jan 03 14:58:24 EET 2017
+regservicecommon-2.3.jar>=
+regservicecommon-2.3.jar>mdtteam-mvn-repo=
+regservicecommon-2.3.pom>=
