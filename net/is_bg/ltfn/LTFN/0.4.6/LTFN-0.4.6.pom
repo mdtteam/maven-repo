@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.is_bg.ltfn</groupId>
 	<artifactId>LTFN</artifactId>
-	<version>0.4.6</version>
+	<version>0.4.7</version>
 	<packaging>pom</packaging>
 	<dependencyManagement>
 		<dependencies>
@@ -42,7 +42,7 @@
 			<dependency>
 				<groupId>net.is_bg.ltfn</groupId>
 				<artifactId>LTFN-Commons</artifactId>
-				<version>0.4.6</version>
+				<version>0.4.7</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

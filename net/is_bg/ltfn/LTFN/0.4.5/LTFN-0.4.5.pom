@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.is_bg.ltfn</groupId>
 	<artifactId>LTFN</artifactId>
-	<version>0.4.5</version>
+	<version>0.4.8</version>
 	<packaging>pom</packaging>
 	<dependencyManagement>
 		<dependencies>
@@ -16,7 +16,7 @@
 			<dependency>
 				<groupId>CC</groupId>
 				<artifactId>CCDB</artifactId>
-				<version>0.11</version>
+				<version>0.12</version>
 			</dependency>
 			<dependency>
 				<groupId>javax.servlet</groupId>
@@ -42,7 +42,7 @@
 			<dependency>
 				<groupId>net.is_bg.ltfn</groupId>
 				<artifactId>LTFN-Commons</artifactId>
-				<version>0.4.5</version>
+				<version>0.4.8</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -55,6 +55,8 @@
 		<module>LTFN-System</module>
 		<module>LTFN-Obligations</module>
 		<module>LTFN-TaxValuations</module>
+		
+		
 	</modules>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
@@ -74,6 +76,30 @@
 					<source>1.7</source>
 					<target>1.7</target>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

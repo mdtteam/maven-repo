@@ -20,7 +20,6 @@
 		<dependency>
 			<groupId>CC</groupId>
 			<artifactId>CCRest</artifactId>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>

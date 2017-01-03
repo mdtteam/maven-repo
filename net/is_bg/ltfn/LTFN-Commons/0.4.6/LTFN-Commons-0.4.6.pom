@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>net.is_bg.ltfn</groupId>
 		<artifactId>LTFN</artifactId>
-		<version>0.4.6</version>
+		<version>0.4.7</version>
 	</parent>
 	<artifactId>LTFN-Commons</artifactId>
 	<name>Archetype - LTFN-Commons</name>
