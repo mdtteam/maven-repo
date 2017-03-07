@@ -4,8 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.is_bg.ltfn</groupId>
 	<artifactId>LTFN</artifactId>
-	<version>0.4.11</version>
+	<version>0.4.14</version>
 	<packaging>pom</packaging>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -37,7 +41,7 @@
 			<dependency>
 				<groupId>net.is_bg.ltfn</groupId>
 				<artifactId>LTFN-Commons</artifactId>
-				<version>0.4.11</version>
+				<version>0.4.14</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -50,6 +54,7 @@
 		<module>LTFN-System</module>
 		<module>LTFN-Obligations</module>
 		<module>LTFN-TaxValuations</module>
+		<module>LTFN-Services</module>
 	</modules>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
