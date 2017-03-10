@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:cc="http://java.sun.com/jsf/composite/components">
+	<h:form id="searchForm">
+		<rich:panel header="#{yBean.caption}" id="searchCriteriaPanel"
+			style="text-align:left">
+			<h:panelGrid columns="11" id="#{searchPanelId}" cellpadding="0px"
+				cellspacing="0px">
+				<!-- Панел за падащ списък с критерии-->
+				<h:panelGrid columns="1" id="comboPanel" cellpadding="0px"
+					cellspacing="0px" style="vertical-align: top;">
+					<cc:entityCombo value="#{yBean.criterionCombo}"
+						selectedValue="#{yBean.selectedCriterion}"
+						converterId="criterionComboBoxConverter" itemLabel="name"
+						render="#{searchPanelId}" defaultLabel="Изберете критерий" />
+				</h:panelGrid>
+				<!-- Подпанел за търсене по стойност -->
+				<h:panelGrid columns="1" cellpadding="0px" cellspacing="0px"
+					rendered="#{yBean.selectedCriterion.searchValueType == 'SINGLE_INPUT_TEXT'}">
+					<h:inputText styleClass="rsInput"
+						value="#{yBean.searchValue.searchString}" style="width: 200px;">
+						<rich:placeholder value="Въведете стойност" />
+						<a4j:ajax event="keyup" render="btnSearch" />
+					</h:inputText>
+				</h:panelGrid>
+				<!-- Подпанел за търсене по стойност -->
+				<h:panelGrid columns="1" cellpadding="0px" cellspacing="0px"
+					rendered="#{yBean.selectedCriterion.searchValueType == 'SEARCH_INPUT_TEXT'}">
+					<h:panelGrid columns="2" id="searchInputText">
+						<h:inputText style="#{cc.attrs.style}"
+							value="#{yBean.selectedCriterion.searchBean.selectedObject[yBean.selectedCriterion.searchBy]}"
+							disabled="#{yBean.selectedCriterion.searchBean.selectedObject.id > 0 }">
+							<rich:placeholder value="Въведете стойност" />
+							<a4j:ajax />
+						</h:inputText>
+						<a4j:commandButton styleClass="toolButton"
+							image="/images/icons/silk/16x16/magnifier.png"
+							oncomplete="showSearchModalPanel()" render="#{searchPanelId}"
+							action="#{decl61XBean.taxDocSearchBean.selectedCriterion.subSearch(yBean.selectedCriterion.searchBean.selectedObject[yBean.selectedCriterion.searchBy])}"
+							rendered="#{yBean.selectedCriterion.searchBean.selectedObject.id == null}" />
+						<a4j:commandButton styleClass="toolButton"
+							image="/images/icons/silk/16x16/delete.png"
+							rendered="#{yBean.selectedCriterion.searchBean.selectedObject.id != null }"
+							action="#{yBean.selectedCriterion.searchBean.resetSelectedObject()}"
+							title="Изчисти" render="#{searchPanelId}" />
+					</h:panelGrid>
+					<a4j:jsFunction name="showSearchModalPanel"
+						render="searchModalPanel"
+						oncomplete="#{rich:component('searchModalPanel')}.show()"
+						rendered="#{yBean.selectedCriterion.searchBean != null and !yBean.selectedCriterion.searchBean.onlyOne}" />
+
+				</h:panelGrid>
+				<!-- Подпанел за търсене по дата -->
+				<h:panelGrid columns="1" cellpadding="0px" cellspacing="0px"
+					rendered="#{yBean.selectedCriterion.searchValueType == 'SINGLE_DATE'}">
+					<rich:calendar firstWeekDay="1" id="searchedDate" direction="auto"
+						enableManualInput="true" datePattern="dd.MM.yyyy"
+						value="#{yBean.searchValue.searchBeginDate}" zindex="1000"
+						cellHeight="18" cellWidth="18" inputSize="12" locale="bg">
+						<rich:placeholder value="Дата" />
+						<a4j:ajax event="inputkeyup" render="btnSearch" />
+						<a4j:ajax event="change" render="btnSearch" />
+					</rich:calendar>
+				</h:panelGrid>
+				<!-- Подпанел за търсене от дата до дата -->
+				<h:panelGrid columns="2" cellpadding="0px" cellspacing="0px"
+					rendered="#{yBean.selectedCriterion.searchValueType == 'FROM_TO_DATES'}">
+					<rich:calendar firstWeekDay="1" id="searchedBeginDate"
+						direction="auto" enableManualInput="true" datePattern="dd.MM.yyyy"
+						value="#{yBean.searchValue.searchBeginDate}" style="width: 100px;"
+						zindex="1000" cellHeight="18" cellWidth="18" inputSize="12"
+						locale="bg">
+						<rich:placeholder value="От дата" />
+						<a4j:ajax event="inputkeyup" render="btnSearch" />
+						<a4j:ajax event="change" render="btnSearch" />
+					</rich:calendar>
+					<rich:calendar firstWeekDay="1" id="searchedEndDate"
+						direction="auto" enableManualInput="true" datePattern="dd.MM.yyyy"
+						value="#{yBean.searchValue.searchEndDate}" style="width: 100px;"
+						zindex="1000" cellHeight="18" cellWidth="18" inputSize="12"
+						locale="bg">
+						<rich:placeholder value="До дата" />
+						<a4j:ajax event="inputkeyup" render="btnSearch" />
+						<a4j:ajax event="change" render="btnSearch" />
+					</rich:calendar>
+				</h:panelGrid>
+
+				<!-- Булеви стойности -->
+				<h:panelGrid columns="1" cellpadding="0px" cellspacing="0px"
+					rendered="#{yBean.selectedCriterion.searchValueType == 'YES_NO'}">
+					<h:selectOneRadio layout="lineDirection"
+						value="#{yBean.searchValue.yesNo}">
+						<f:selectItem itemValue="1" itemLabel="#{msgSearchTemplate.yes}" />
+						<f:selectItem itemValue="0" itemLabel="#{msgSearchTemplate.no}" />
+					</h:selectOneRadio>
+				</h:panelGrid>
+				<!-- Подпанел за търсене по адрес -->
+				<h:panelGroup id="addressPanel"
+					rendered="#{yBean.selectedCriterion.searchValueType == 'ADDRESS'}"
+					layout="block">
+					<h:outputText value="#{msgAbstractSearchBean.country}" />
+					<h:inputText
+						value="#{xBean.searchValue.searchAddress.street.city.country.name}"
+						size="16" />
+
+					<h:outputText value="#{msgAbstractSearchBean.municipality}" />
+					<h:inputText
+						value="#{xBean.searchValue.searchAddress.street.city.municipality.fullName}"
+						size="18" />
+
+					<h:outputText value="#{msgAbstractSearchBean.city}" />
+					<h:inputText
+						value="#{xBean.searchValue.searchAddress.street.city.name}"
+						size="20" />
+
+					<br />
+
+					<h:outputText value="#{msgAbstractSearchBean.street}" />
+					<h:inputText value="#{xBean.searchValue.searchAddress.street.name}"
+						size="28" />
+
+					<h:outputText value="#{msgAbstractSearchBean.number}" />
+					<h:inputText value="#{xBean.searchValue.searchAddress.no}" size="2" />
+
+					<h:outputText value="#{msgAbstractSearchBean.block}" />
+					<h:inputText value="#{xBean.searchValue.searchAddress.block}"
+						size="3" />
+
+					<h:outputText value="#{msgAbstractSearchBean.entry}" />
+					<h:inputText value="#{xBean.searchValue.searchAddress.entry}"
+						size="2" />
+
+					<h:outputText value="#{msgAbstractSearchBean.floor}" />
+					<h:inputText value="#{xBean.searchValue.searchAddress.floor}"
+						size="1" />
+
+					<h:outputText value="#{msgAbstractSearchBean.apartment}" />
+					<h:inputText value="#{xBean.searchValue.searchAddress.apartment}"
+						size="2" />
+				</h:panelGroup>
+				<a4j:commandButton value="#{msgButtons.btnSearch}" id="btnSearch"
+					render="tablePanel, msgModal" oncomplete="javascript:errMsg();"
+					action="#{yBean.searchFirstPage}"
+					rendered="#{yBean.selectedCriterion != null}"
+					disabled="#{!yBean.btnSearchEnabled}" />
+				<h:commandButton value="#{msgButtons.btnCancel}" id="btnCancel"
+					action="#{yBean.btnCancelGetAction}"
+					rendered="#{yBean.selectedCriterion != null}"
+					onclick="#{rich:component('searchModalPanel')}.hide()" />
+			</h:panelGrid>
+		</rich:panel>
+		<!-- таблица -->
+		<a4j:outputPanel id="tablePanel">
+			<rich:dataTable cellpadding="0" cellspacing="0"
+				headerClass="dataTable-header" style="width: 100%;"
+				styleClass="dataTable" rowClasses="tableRowWhite, tableRowYellow"
+				value="#{yBean.tableValue}" var="obj" sortMode="single"
+				selectionMode="single" width="100%" rendered="true"
+				noDataLabel="Няма намерени резултати"
+				onrowmouseover="this.style.backgroundColor='#ffd699'"
+				onrowmouseout="this.style.backgroundColor='#{a4jSkin.rowBackgroundColor}'"
+				rowKeyVar="rkv">
+				<a4j:ajax event="rowclick" listener="#{yBean.btnSelectClick(obj)}"
+					render="searchPanel, modalSearchPanel" />
+				<rich:column rendered="#{yBean.showId}">
+					<f:facet name="header">
+						<h:outputText value="ID" />
+					</f:facet>
+					<f:facet name="footer">
+						<h:outputText value="ID" />
+					</f:facet>
+					<h:outputText value="#{rowValue.id}" />
+				</rich:column>
+				<c:forEach items="#{yBean.tableColumns}" var="tableColumn">
+					<rich:column width="#{tableColumn.colWidth}"
+						rendered="#{tableColumn.visible}"
+						style="text-align: #{tableColumn.align}; width: #{yBean.calcColumnWidth(tableColumn)}%">
+						<f:facet name="header">
+							<h:outputText value="#{tableColumn.colHeader}"
+								style="text-align: center" />
+						</f:facet>
+						<h:outputText value="#{yBean.eval(tableColumn.displayedValue)}">
+							<f:converter converterId="genericConverter" />
+							<f:attribute name="converterId"
+								value="#{tableColumn.converter.converterId}" />
+						</h:outputText>
+					</rich:column>
+				</c:forEach>
+				<rich:column style="text-align:right;" id="buttons"
+					rendered="#{not empty yBean.activeActions}">
+					<f:facet name="header">
+						<a4j:outputPanel id="btnAddOP">
+							<h:commandButton image="/images/icons/silk/16x16/add.png"
+								styleClass="hoverButton" label="#{msgButtons.btnAdd}"
+								value="#{msgButtons.btnAdd}" action="#{yBean.btnAddClick}"
+								rendered="#{yBean.activeActions.containsKey('ADD')}"
+								style="float:right;">
+								<ui:include src="/searchtemplate/editbtntooltip.xhtml">
+									<ui:param name="toolTip" value="Добавяне" />
+									<ui:param name="target" value="btnAddOP" />
+								</ui:include>
+							</h:commandButton>
+						</a4j:outputPanel>
+					</f:facet>
+					<ui:include
+						src="/include/search/seachrtemplatecommandbuttons.xhtml">
+						<ui:param name="xBean" value="#{yBean}">
+						</ui:param>
+					</ui:include>
+				</rich:column>
+			</rich:dataTable>
+			<center>
+				<a4j:outputPanel
+					rendered="#{yBean.tableValue != null and not empty yBean.tableValue}">
+					<br />
+					<ui:include
+						src="/searchtemplate/searchtemplatenavigationbuttons.xhtml">
+						<ui:param name="xBean" value="#{yBean}"></ui:param>
+					</ui:include>
+				</a4j:outputPanel>
+			</center>
+		</a4j:outputPanel>
+	</h:form>
+</ui:composition>

@@ -1,0 +1,99 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	
+	
+	<h:panelGrid columns="16"  cellspacing="0">
+						<a4j:commandButton value="&lt;&lt;"
+							style="min-width:10px; margin: 0px; border-radius: 0px; border-top-left-radius: 10px; border-bottom-left-radius: 10px; font-size:7pt"
+							disabled="#{xBean.pageNumber == 1}"
+							actionListener="#{xBean.pageChanged('f')}" render="tablePanel" />
+						<a4j:commandButton value="&lt;"
+							style="min-width:10px; margin: 0px; border-radius: 0px; font-size:7pt"
+							disabled="#{xBean.pageNumber == 1}"
+							actionListener="#{xBean.pageChanged('-1')}" render="tablePanel" />
+						<a4j:commandButton
+							value="#{xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber - 5 : xBean.pagesCount - 9) : 1}"
+							style=" min-width:10px; margin: 0px; border-radius: 0px;"
+							actionListener="#{xBean.pageChanged(xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber - 5 : xBean.pagesCount - 9) : 1)}"
+							render="tablePanel"
+							disabled="#{xBean.pageNumber == (xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber - 5 : xBean.pagesCount - 9) : 1)}" 
+							rendered="#{xBean.pagesCount > 0}"/>
+						<a4j:commandButton
+							value="#{xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber - 4 : xBean.pagesCount - 8) : 2}"
+							style="min-width:10px; margin: 0px; border-radius: 0px;"
+							actionListener="#{xBean.pageChanged(xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber - 4 : xBean.pagesCount - 8) : 2)}"
+							render="tablePanel"
+							disabled="#{xBean.pageNumber == (xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber - 4 : xBean.pagesCount - 8) : 2)}"
+							rendered="#{xBean.pagesCount > 1}" />
+						<a4j:commandButton
+							value="#{xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber - 3 : xBean.pagesCount - 7) : 3}"
+							style="min-width:10px; margin: 0px; border-radius: 0px;"
+							actionListener="#{xBean.pageChanged(xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber - 3 : xBean.pagesCount - 7) : 3)}"
+							render="tablePanel"
+							disabled="#{xBean.pageNumber == (xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber - 3 : xBean.pagesCount - 7) : 3)}"
+							rendered="#{xBean.pagesCount > 2}" />
+						<a4j:commandButton
+							value="#{xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber - 2 : xBean.pagesCount - 6) : 4}"
+							style="min-width:10px; margin: 0px; border-radius: 0px;"
+							actionListener="#{xBean.pageChanged(xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber - 2 : xBean.pagesCount - 6) : 4)}"
+							render="tablePanel"
+							disabled="#{xBean.pageNumber == (xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber - 2 : xBean.pagesCount - 6) : 4)}"
+							rendered="#{xBean.pagesCount > 3}" />
+						<a4j:commandButton
+							value="#{xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber - 1 : xBean.pagesCount - 5) : 5}"
+							style="min-width:10px; margin: 0px; border-radius: 0px;"
+							actionListener="#{xBean.pageChanged(xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber - 1 : xBean.pagesCount - 5) : 5)}"
+							render="tablePanel"
+							disabled="#{xBean.pageNumber == (xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber - 1 : xBean.pagesCount - 5) : 5)}"
+							rendered="#{xBean.pagesCount > 4}" />
+						<a4j:commandButton
+							value="#{xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber : xBean.pagesCount - 4) : 6}"
+							style="min-width:10px; margin: 0px; border-radius: 0px;"
+							actionListener="#{xBean.pageChanged(xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber : xBean.pagesCount - 4): 6)}"
+							render="tablePanel"
+							disabled="#{xBean.pageNumber == (xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber : xBean.pagesCount - 4) : 6)}"
+							rendered="#{xBean.pagesCount > 5}" />
+						<a4j:commandButton
+							value="#{xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber + 1 : xBean.pagesCount - 3) : 7}"
+							style="min-width:10px; margin: 0px; border-radius: 0px;"
+							actionListener="#{xBean.pageChanged(xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber + 1 : xBean.pagesCount - 3) : 7)}"
+							render="tablePanel"
+							disabled="#{xBean.pageNumber == (xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber + 1 : xBean.pagesCount - 3) : 7)}"
+							rendered="#{xBean.pagesCount > 6}" />
+						<a4j:commandButton
+							value="#{xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber + 2 : xBean.pagesCount - 2) : 8}"
+							style="min-width:10px; margin: 0px; border-radius: 0px;"
+							actionListener="#{xBean.pageChanged(xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber + 2 : xBean.pagesCount - 2) : 8)}"
+							render="tablePanel"
+							disabled="#{xBean.pageNumber == (xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber + 2 : xBean.pagesCount - 2) : 8)}"
+							rendered="#{xBean.pagesCount > 7}" />
+						<a4j:commandButton
+							value="#{xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber + 3 : xBean.pagesCount - 1) : 9}"
+							style="min-width:10px; margin: 0px; border-radius: 0px;"
+							actionListener="#{xBean.pageChanged(xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber + 3 : xBean.pagesCount - 1) : 9)}"
+							render="tablePanel"
+							disabled="#{xBean.pageNumber == (xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber + 3 : xBean.pagesCount - 1) : 9)}"
+							rendered="#{xBean.pagesCount > 8}" />
+						<a4j:commandButton
+							value="#{xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber + 4 : xBean.pagesCount) : 10}"
+							style="min-width:10px; margin: 0px; border-radius: 0px;"
+							actionListener="#{xBean.pageChanged(xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber + 4 : xBean.pagesCount) : 10)}"
+							render="tablePanel"
+							disabled="#{xBean.pageNumber == (xBean.pageNumber > 6 ? ((xBean.pagesCount - xBean.pageNumber) > 4 ? xBean.pageNumber + 4 : xBean.pagesCount) : 10)}"
+							rendered="#{xBean.pagesCount > 9}" />
+						<a4j:commandButton value="&gt;"
+							style="min-width:10px; margin: 0px; border-radius: 0px;; font-size:7pt"
+							disabled="#{xBean.pageNumber == xBean.pagesCount}"
+							actionListener="#{xBean.pageChanged('+1')}" render="tablePanel" />
+							<a4j:commandButton value="&gt;&gt;"
+							style="min-width:10px; margin: 0px; border-radius: 0px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; font-size:7pt"
+							disabled="#{xBean.pageNumber == xBean.pagesCount}"
+							actionListener="#{xBean.pageChanged('l')}" render="tablePanel" />
+					</h:panelGrid> 
+	
+</ui:composition>	
